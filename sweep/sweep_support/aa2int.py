@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import numpy as np
-import pandas as pd
 def aa2int(aa_list):
-    aa_list=pd.DataFrame(np.char.lower(aa_list))
     map = { "a":1,
             "b":21,
             "c":5,
@@ -34,5 +32,7 @@ def aa2int(aa_list):
             "-": 25,
             "?": 0
             }
-    aa_list=aa_list.replace(map)
+    aa_list = np.char.lower(aa_list)
+    map_func = np.vectorize(map.get)
+    aa_list = map_func(aa_list)
     return aa_list

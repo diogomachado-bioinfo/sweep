@@ -6,9 +6,7 @@ from .aa2idx import *
 from .ij2inds import *
 from .generate_chunk import *
 from .seq2list import *
-from .mask2vec import *
+from .mask2vec_bin import *
+from .mask2vec_count import *
 from .generate_chunk import *
-from .matlab_like import *
 from .orth import *
-from .orthbase import *
-from .fastaread import *

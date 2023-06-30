@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import numpy as np
-import pandas as pd
 def nt2int(nt_list):
-    nt_list=pd.DataFrame(np.char.lower(nt_list))
     map = { "a":1,
             "b":11,
             "c":2,
@@ -34,5 +32,7 @@ def nt2int(nt_list):
             "-": 16,
             "?": 0
             }
-    nt_list=nt_list.replace(map)
+    nt_list = np.char.lower(nt_list)
+    map_func = np.vectorize(map.get)
+    nt_list = map_func(nt_list)
     return nt_list
