@@ -40,8 +40,8 @@ sequences:
 ## Changing Projection Matrix
 
 To change the projection matrix, a new orthonormal matrix can be
-generated using the orthbase function. For example,
-here is an example of how to change the projection size to 300:
+generated using the orthbase function. Here is an example of how
+to change the projection size to 300:
 
     from sweep import fastaread, fas2sweep, orthbase
 
@@ -87,7 +87,7 @@ functions available in the SWeeP package:
 If you use the SWeeP algorithm or this Python package in your research work, please cite the
 following article:
 
-``` none
+```
 @article{De Pierri2020,
   title={SWeeP: representing large biological sequences datasets in compact vectors},
   author={De Pierri, Camilla Reginatto and Voyceik, Ricardo and Santos de Mattos, Letícia Graziela Costa and Kulik, Mariane Gonçalves and Camargo, Josué Oliveira and Repula de Oliveira, Aryel Marlus and de Lima Nichio, Bruno Thiago and Marchaukoski, Jeroniza Nunes and da Silva Filho, Antonio Camilo and Guizelini, Dieval and Ortega, J. Miguel and Pedrosa, Fabio O. and Raittz, Roberto Tadeu},
