@@ -19,8 +19,8 @@ To use SWeeP in Python, install the package with the following command:
 
 In the first use of fas2sweep with the default parameter, it will be
 necessary to download the default projection matrix. It is not necessary
-for use with custom projection matrix, as
-demonstrated in the "Changing Projection Matrix" topic.
+for use with custom projection matrix, as demonstrated in the "Changing
+Projection Matrix" topic. Here is how to perform the default matrix download:
 
     from sweep import down_proj_mat
     down_proj_mat() # Downloads the default projection matrix file
@@ -29,7 +29,7 @@ demonstrated in the "Changing Projection Matrix" topic.
 
 The default configurations of SWeeP are intended for vectorization of
 amino acid sequences. The default output is a matrix already projected
-with 600 columns. Here\'s an example of how to use SWeeP with amino acid
+with 600 columns. Here is an example of how to use SWeeP with amino acid
 sequences:
 
     from sweep import fastaread, fas2sweep
