@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='sweep',
-      version='2.0.0.2',
+      version='2.0.1.0',
       author='Diogo de J. S. Machado',
       author_email='diogomachado.bioinfo@gmail.com',
       description='SWeeP is a tool for representing large biological sequences datasets in compact vectors',
