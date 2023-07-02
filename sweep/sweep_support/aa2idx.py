@@ -1,8 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 from .aa2int import aa2int
 from .nt2int import nt2int
 import numpy as np
+
 def aa2idx(xseq, defSize):
     [n,m] = np.array(xseq).shape
     if defSize == 20:

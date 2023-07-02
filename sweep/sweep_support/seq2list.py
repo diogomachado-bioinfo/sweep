@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import numpy as np
+
 def seq2list(sdna, q):
     sdna = np.array(list(sdna))
     n = sdna.shape[0]

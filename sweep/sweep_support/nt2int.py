@@ -1,6 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 import numpy as np
+
 def nt2int(nt_list):
     map = { "a":1,
             "b":11,

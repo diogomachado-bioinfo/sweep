@@ -1,6 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 import numpy as np
+
 def aa2int(aa_list):
     map = { "a":1,
             "b":21,

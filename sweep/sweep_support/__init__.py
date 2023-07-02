@@ -1,5 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 from .aa2int import *
 from .nt2int import *
 from .aa2idx import *

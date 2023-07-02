@@ -1,9 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 from .seq2list import seq2list
 from .aa2idx import aa2idx
 from .ij2inds import ij2inds
 import numpy as np
+
 def mask2vec_bin(xseq, mask=[2,1,2], defSize=20):
     t = mask[0] + mask[1] + mask[2]
     slice = seq2list(xseq, int(t))

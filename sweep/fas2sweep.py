@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 from .sweep_support import mask2vec_bin,mask2vec_count,generate_chunk

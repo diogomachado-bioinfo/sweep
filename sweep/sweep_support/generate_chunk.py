@@ -1,7 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 import math
 import numpy as np
+
 def generate_chunk(chunks, file_len):
     chunk_size = math.floor(file_len/chunks)
     chunk_indices = (np.tile(chunk_size, (chunks, 2)) *
