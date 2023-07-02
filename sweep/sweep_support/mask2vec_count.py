@@ -13,8 +13,8 @@ def mask2vec_count(xseq, mask=[2,1,2], defSize=20):
     inds = ij2inds(xy,lines)
     cols = defSize**mask[2]
     M = np.zeros((1,lines*cols),dtype=int)
-    #rows_size = defSize**mask[0]*defSize**mask[2]
-    #inds=inds[inds<=rows_size]
+    rows_size = defSize**mask[0]*defSize**mask[2]
+    inds=inds[inds<=rows_size]
     inds,counts=np.unique(inds,
                           return_index=False,
                           return_inverse=False,
