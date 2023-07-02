@@ -14,7 +14,7 @@ def mask2vec_bin(xseq, mask=[2,1,2], defSize=20):
     inds = ij2inds(xy,lines)
     cols = defSize**mask[2]
     M = np.zeros((1,lines*cols),dtype=int)
-    #rows_size = defSize**mask[0]*defSize**mask[2]
-    #inds=inds[inds<=rows_size]
+    rows_size = defSize**mask[0]*defSize**mask[2]
+    inds=inds[inds<=rows_size]
     M[0,inds-1]=1
     return M
