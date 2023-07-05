@@ -2,7 +2,7 @@
   SWeeP: Sequence Window Projection
   -----------------------------------
 
-This Python package implements the SWeeP (Sequence Window Projection)
+This Python package implements the SWeeP (Spaced Words Projection)
 algorithm for representing large biological sequence datasets in compact
 vectors. SWeeP allows efficient processing and analysis of sequence data
 by converting sequences into fixed-length feature vectors.
