@@ -1,6 +1,6 @@
-  -----------------------------------
-  SWeeP: Spaced Words Projection
-  -----------------------------------
+-----------------------------------
+SWeeP: Spaced Words Projection
+-----------------------------------
 
 This Python package implements the SWeeP (Spaced Words Projection), a
 algorithm for representing biological sequences in compact and fixed-length
@@ -21,9 +21,9 @@ necessary to download the default projection matrix. It is not necessary
 for use with custom projection matrix, as demonstrated in the "Changing
 Projection Matrix" topic. Here is how to perform the default matrix download:
 ```python
-    from sweep import down_proj_mat
+from sweep import down_proj_mat
 
-    down_proj_mat() # Downloads the default projection matrix file
+down_proj_mat() # Downloads the default projection matrix file
 ```
 
 ## Handling Amino Acid Sequences
@@ -33,10 +33,10 @@ amino acid sequences. The default output is a matrix already projected
 with 600 columns. Here is an example of how to use SWeeP with amino acid
 sequences:
 ```python
-    from sweep import fastaread, fas2sweep
+from sweep import fastaread, fas2sweep
 
-    fasta = fastaread("fasta_file_path")
-    vect = fas2sweep(fasta)
+fasta = fastaread("fasta_file_path")
+vect = fas2sweep(fasta)
 ```
 
 ## Changing Projection Matrix
@@ -45,11 +45,11 @@ To change the projection matrix, a new orthonormal matrix can be
 generated using the orthbase function. Here is an example of how
 to change the projection size to 300:
 ```python
-    from sweep import fastaread, fas2sweep, orthbase
+from sweep import fastaread, fas2sweep, orthbase
 
-    ob = orthbase(160000, 300)
-    fasta = fastaread("fasta_file_path")
-    vect = fas2sweep(fasta, orth_mat=ob)
+ob = orthbase(160000, 300)
+fasta = fastaread("fasta_file_path")
+vect = fas2sweep(fasta, orth_mat=ob)
 ```
 
 ## Handling Nucleotide Sequences
@@ -60,13 +60,13 @@ is possible to create a custom projection matrix using the
 orthbase function. The matrix size can be calculated using
 the calc_proj_mat_size function. Here is an example:
 ```python
-    from sweep import fastaread, fas2sweep, orthbase, calc_proj_mat_size
+from sweep import fastaread, fas2sweep, orthbase, calc_proj_mat_size
 
-    mask = [4, 7, 4]
-    matrix_size = calc_proj_mat_size(mask, 'NT')
-    ob = orthbase(matrix_size, 600)
-    fasta = fastaread("fasta_file_path")
-    vect = fas2sweep(fasta, mask=mask, orth_mat=ob, fasta_type='NT')
+mask = [4, 7, 4]
+matrix_size = calc_proj_mat_size(mask, 'NT')
+ob = orthbase(matrix_size, 600)
+fasta = fastaread("fasta_file_path")
+vect = fas2sweep(fasta, mask=mask, orth_mat=ob, fasta_type='NT')
 ```
 
 ## Available Functions
