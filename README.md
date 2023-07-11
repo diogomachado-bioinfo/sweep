@@ -22,6 +22,7 @@ for use with custom projection matrix, as demonstrated in the "Changing
 Projection Matrix" topic. Here is how to perform the default matrix download:
 ```python
     from sweep import down_proj_mat
+
     down_proj_mat() # Downloads the default projection matrix file
 ```
 
