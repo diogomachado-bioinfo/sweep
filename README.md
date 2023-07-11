@@ -90,7 +90,7 @@ functions available in the SWeeP package:
 If you use the SWeeP algorithm or this Python package in your work, please cite the
 following article:
 
-```
+```bib
 @article{Pierri2020,
   title={SWeeP: representing large biological sequences datasets in compact vectors},
   author={De Pierri, Camilla Reginatto and Voyceik, Ricardo and Santos de Mattos, Letícia Graziela Costa and Kulik, Mariane Gonçalves and Camargo, Josué Oliveira and Repula de Oliveira, Aryel Marlus and de Lima Nichio, Bruno Thiago and Marchaukoski, Jeroniza Nunes and da Silva Filho, Antonio Camilo and Guizelini, Dieval and Ortega, J. Miguel and Pedrosa, Fabio O. and Raittz, Roberto Tadeu},
