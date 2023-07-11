@@ -82,7 +82,7 @@ functions available in the SWeeP package:
 
 ## Article Reference
 
-If you use the SWeeP algorithm or this Python package in your research work, please cite the
+If you use the SWeeP algorithm or this Python package in your work, please cite the
 following article:
 
 ```
@@ -99,6 +99,3 @@ following article:
   issn={2045-2322}
 }
 ```
-
-Please refer to the article for a detailed description of the SWeeP
-algorithm and its applications.
