@@ -2,10 +2,9 @@
   SWeeP: Spaced Words Projection
   -----------------------------------
 
-This Python package implements the SWeeP (Spaced Words Projection)
-algorithm for representing large biological sequence datasets in compact
-vectors. SWeeP allows efficient processing and analysis of sequence data
-by converting sequences into fixed-length feature vectors.
+This Python package implements the SWeeP (Spaced Words Projection), a
+algorithm for representing biological sequences in compact and fixed-length
+feature vectors.
 
 # Installation
 
