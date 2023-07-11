@@ -20,9 +20,10 @@ In the first use of fas2sweep with the default parameter, it will be
 necessary to download the default projection matrix. It is not necessary
 for use with custom projection matrix, as demonstrated in the "Changing
 Projection Matrix" topic. Here is how to perform the default matrix download:
-
+```python
     from sweep import down_proj_mat
     down_proj_mat() # Downloads the default projection matrix file
+```
 
 ## Handling Amino Acid Sequences
 
@@ -30,23 +31,25 @@ The default configurations of SWeeP are intended for vectorization of
 amino acid sequences. The default output is a matrix already projected
 with 600 columns. Here is an example of how to use SWeeP with amino acid
 sequences:
-
+```python
     from sweep import fastaread, fas2sweep
 
     fasta = fastaread("fasta_file_path")
     vect = fas2sweep(fasta)
+```
 
 ## Changing Projection Matrix
 
 To change the projection matrix, a new orthonormal matrix can be
 generated using the orthbase function. Here is an example of how
 to change the projection size to 300:
-
+```python
     from sweep import fastaread, fas2sweep, orthbase
 
     ob = orthbase(160000, 300)
     fasta = fastaread("fasta_file_path")
     vect = fas2sweep(fasta, orth_mat=ob)
+```
 
 ## Handling Nucleotide Sequences
 
@@ -55,7 +58,7 @@ available in this version. Therefore, to work with nucleotides
 is possible to create a custom projection matrix using the
 orthbase function. The matrix size can be calculated using
 the calc_proj_mat_size function. Here is an example:
-
+```python
     from sweep import fastaread, fas2sweep, orthbase, calc_proj_mat_size
 
     mask = [4, 7, 4]
@@ -63,6 +66,7 @@ the calc_proj_mat_size function. Here is an example:
     ob = orthbase(matrix_size, 600)
     fasta = fastaread("fasta_file_path")
     vect = fas2sweep(fasta, mask=mask, orth_mat=ob, fasta_type='NT')
+```
 
 ## Available Functions
 
