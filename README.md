@@ -1,5 +1,6 @@
 -----------------------------------
-SWeeP: Spaced Words Projection
+# SWeeP: Spaced Words Projection
+
 -----------------------------------
 
 This Python package implements the SWeeP (Spaced Words Projection), a
