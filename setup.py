@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(name='sweep',
-      version='2.0.1.4',
+      version='2.1.1.4',
       author='Diogo de J. S. Machado',
       author_email='diogomachado.bioinfo@gmail.com',
       description='SWeeP is a tool for representing large biological sequences datasets in compact vectors',
@@ -13,7 +13,7 @@ setup(name='sweep',
       long_description_content_type='text/markdown',
       long_description=open('README.md').read(),
       zip_safe=False,
-      install_requires=['numpy', 'Biopython', 'scipy', 'tqdm', 'h5py'],
+      install_requires=['numpy', 'Biopython', 'scipy', 'tqdm', 'h5py', 'joblib'],
       package_data = {'': ['*.mat']},
       license = 'BSD-3-Clause',
       url='https://github.com/diogomachado-bioinfo/sweep',

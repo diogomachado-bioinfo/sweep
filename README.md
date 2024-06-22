@@ -69,21 +69,153 @@ fasta = fastaread("fasta_file_path")
 vect = fas2sweep(fasta, mask=mask, orth_mat=ob, fasta_type='NT')
 ```
 
+## Phylogenetic Tree Generation Using SWeeP
+
+This example demonstrates the usage of the generate_tree function
+from the sweep package. Initially, a mask is defined for nucleotide
+sequences, and the projection matrix size is calculated accordingly.
+An orthonormal projection matrix is generated using `orthbase`.
+Sequences are then read from a FASTA file using `fastaread`.
+By employing `fas2sweep`, these sequences are transformed into SWeeP
+vectors based on the defined mask and orthonormal matrix. Lastly,
+generate_tree is invoked with these vectors, sequence headers, and
+a specified file name to save the resulting phylogenetic tree in
+Newick format.
+```python
+from sweep import (fastaread, fas2sweep, orthbase, calc_proj_mat_size,
+                   generate_tree, extract_headers_and_sequences)
+
+# Define the mask for nucleotide sequences
+mask = [4, 7, 4]  # Example mask for nucleotide sequences
+
+# Calculate the projection matrix size based on the mask and sequence type ('NT' for nucleotides)
+matrix_size = calc_proj_mat_size(mask, 'NT')
+
+# Generate an orthonormal projection matrix using orthbase
+ob = orthbase(matrix_size, 600)  # 600 is an arbitrary size example for illustration
+
+# Read sequences from a FASTA file containing nucleotide sequences
+fasta = fastaread("fasta_file_path")
+
+# Extract headers and sequences from the FASTA file
+headers, _ = extract_headers_and_sequences(fasta)
+
+# Convert nucleotide sequences to SWeeP vectors using fas2sweep
+vect = fas2sweep(fasta, mask=mask, orth_mat=ob, fasta_type='NT')
+
+# Generate a phylogenetic tree from the SWeeP vectors and save it in Newick format
+tree = generate_tree(vect, headers, 'tree.newick')
+```
+
 ## Available Functions
 
 Here is a summary of the
 functions available in the SWeeP package:
 
-| Function                            | Description                                                                      | Input                                                          | Output                                          |
-|-------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------|-------------------------------------------------|
-| ``fastaread``                       | Reads a FASTA file and returns a list of sequence records                        | ``fastaname`` (str): Path to the FASTA file                    | ``records`` (list): List of sequence records    |
-| ``fas2sweep``                       | Converts a list of sequences into SWeeP vectors                                  | ``fasta`` (list): List of sequence records                     | ``vect`` (numpy.ndarray): SWeeP vectors         |
-| ``orthbase``                        | Generates an orthonormal projection matrix of the specified size                 | ``lin`` (int): Number of rows                                  | ``mret`` (numpy.ndarray): Orthonormal matrix    |
-| ``calc_proj_mat_size``              | Calculates the number of lines in the projection matrix for a given mask         | ``mask`` (list): Mask specifying dimensions                    | ``lines`` (int): Number of lines in the matrix  |
-| ``down_proj_mat``                   | Downloads the default projection matrix file                                     | ``destination`` (str): Path to the destination file (optional) | None                                            |
-| ``return_proj_mat_not_found_error`` | Raises an exception indicating that the default projection matrix is not found   | None                                                           | None                                            |
-| ``check_default_proj_mat``          | Checks if the default projection matrix exists and matches the expected MD5 hash | ``file`` (str): Path to the projection matrix file             | None                                            |
-| ``get_default_proj_mat``            | Retrieves the default projection matrix                                          | None                                                           | ``orth_mat`` (numpy.ndarray): Projection matrix |
+---
+
+### ``fastaread``
+
+- **Description:** Reads a FASTA file and returns a list of sequence records.
+- **Input:** ``fastaname`` (str) - Path to the FASTA file.
+- **Output:** ``records`` (list) - List of sequence records.
+
+---
+
+### ``fas2sweep``
+
+- **Description:** Converts a list of sequences into SWeeP vectors.
+- **Input:** ``fasta`` (list) - List of sequence records.
+- **Output:** ``vect`` (numpy.ndarray) - SWeeP vectors.
+
+---
+
+### ``orthbase``
+
+- **Description:** Generates an orthonormal projection matrix of the specified size.
+- **Input:**
+  - ``lin`` (int) - Number of rows.
+  - ``col`` (int): Number of columns in the matrix.
+  - ``seed`` (int, optional): Seed for the random number generator.
+- **Output:** ``mret`` (numpy.ndarray) - Orthonormal matrix.
+
+---
+
+### ``calc_proj_mat_size``
+
+- **Description:** Calculates the number of lines in the projection matrix for a given mask.
+- **Input:** ``mask`` (list) - Mask specifying dimensions.
+- **Output:** ``lines`` (int) - Number of lines in the matrix.
+
+---
+
+### ``down_proj_mat``
+
+- **Description:** Downloads the default projection matrix file.
+- **Input:** ``destination`` (str) - Path to the destination file (optional).
+- **Output:** None.
+
+---
+
+### ``return_proj_mat_not_found_error``
+
+- **Description:** Raises an exception indicating that the default projection matrix is not found.
+- **Input:** None.
+- **Output:** None.
+
+---
+
+### ``check_default_proj_mat``
+
+- **Description:** Checks if the default projection matrix exists and matches the expected MD5 hash.
+- **Input:** ``file`` (str) - Path to the projection matrix file.
+- **Output:** None.
+
+---
+
+### ``get_default_proj_mat``
+
+- **Description:** Retrieves the default projection matrix.
+- **Input:** None.
+- **Output:** ``orth_mat`` (numpy.ndarray) - Projection matrix.
+
+---
+
+### ``scipy_tree_to_newick``
+
+- **Description:** Constructs a Newick tree from a SciPy hierarchy ClusterNode.
+- **Input:**
+  - ``node`` (scipy.cluster.hierarchy.ClusterNode): Root node from hierarchical clustering.
+  - ``parentdist`` (float): Distance from parent node to `node`.
+  - ``leaf_names`` (List[str]): Names of the leaf nodes.
+- **Output:** (str) - String in Newick format.
+
+---
+
+### ``generate_tree``
+
+- **Description:** Generates a Newick format tree from an input matrix.
+- **Input:**
+  - ``mat`` (List[List[float]]): Input matrix.
+  - ``labels`` (List[str]): List of labels for the tree leaves.
+  - ``output_file`` (str, optional): Name of the output file. If provided, the tree will be saved to this file.
+  - ``metric`` (str): Distance metric to be used. Default is 'euclidean'.
+  - ``method`` (str): Linkage method to be used in hierarchical clustering. Default is 'complete'.
+- **Output:** (str) - String in Newick format representing the tree.
+
+---
+
+### `extract_headers_and_sequences`
+
+- **Description:** Extracts headers and sequences from a list of SeqRecord objects.
+- **Input:**
+  - `seq_records` (List[SeqIO.SeqRecord]): List of SeqRecord objects.
+- **Output:** 
+  - (Tuple[List[str], List[str]]) - A tuple containing two lists:
+    - List of headers (sequence IDs).
+    - List of sequences (as strings).
+
+---
 
 ## Article Reference
 
