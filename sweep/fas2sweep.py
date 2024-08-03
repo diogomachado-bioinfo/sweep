@@ -14,9 +14,9 @@ from tqdm import tqdm
 from joblib import Parallel, delayed
 
 def fas2sweep(xfas, orth_mat=None, mask=None, composition='binary',
-              verbose=False, chunk_size=1000, projection=True,
-              fasta_type='AA', skip_seq_len_check=False, dtype=None,
-              n_jobs=1):
+              verbose=False, verbose_start='', chunk_size=1000,
+              projection=True, fasta_type='AA', skip_seq_len_check=False,
+              dtype=None, n_jobs=1):
     """
     Perform the SWeeP algorithm on sequences in FASTA format.
 
@@ -52,18 +52,18 @@ def fas2sweep(xfas, orth_mat=None, mask=None, composition='binary',
             dtype = np.int32
 
     if mask is None:
-        mask = np.array([2, 1, 2])
+        mask = [2, 1, 2]
+    mask = np.array(mask)
 
     if fasta_type == 'AA':
         defSize = 20
     elif fasta_type == 'NT':
         defSize = 4
 
-    mask_type = type(sum(list(mask)))
     mask_sum = sum([mask[0], mask[2]])
 
     # Check if the mask is valid
-    if len(mask) != 3 or not (mask_type == int or mask_type == np.int32):
+    if len(mask) != 3 or not (isinstance(sum(mask), np.integer)):
         message = 'Mask must be an array with 3 integer values.'
         raise Exception(message)
 
@@ -161,7 +161,8 @@ def fas2sweep(xfas, orth_mat=None, mask=None, composition='binary',
     # Run sweep on chunks in parallel
     result_mat = Parallel(n_jobs=n_jobs, prefer='threads')(delayed(sweep_chunk)
         (i) for i in tqdm(range_s, position=0, leave=True,
-                          desc='Running SWeeP', file=sys.stdout,
+                          desc=f'{verbose_start}Running SWeeP',
+                          file=sys.stdout,
                           disable=(not verbose)))
 
     # Concatenate the resulting matrices
